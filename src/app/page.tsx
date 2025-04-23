@@ -10,10 +10,10 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/2 mb-8 md:mb-0">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                  Communiquez intelligemment avec l'IA
+                  Communiquez intelligemment avec l&apos;IA
                 </h1>
                 <p className="text-xl mb-6">
-                  Transformez votre communication grâce à l'intelligence artificielle et l'automatisation.
+                  Transformez votre communication grâce à l&apos;intelligence artificielle et l&apos;automatisation.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -50,7 +50,7 @@ export default function Home() {
               {[
                 {
                   title: 'Branding',
-                  description: 'Création d\'identité de marque augmentée par l\'IA',
+                  description: 'Création d&apos;identité de marque augmentée par l&apos;IA',
                   icon: '🎨'
                 },
                 {
@@ -60,7 +60,7 @@ export default function Home() {
                 },
                 {
                   title: 'Stratégie IA',
-                  description: 'Intégration de l\'intelligence artificielle dans votre communication',
+                  description: 'Intégration de l&apos;intelligence artificielle dans votre communication',
                   icon: '🧠'
                 },
                 {
@@ -121,7 +121,7 @@ export default function Home() {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-4">Prêt à transformer votre communication ?</h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Contactez-nous dès aujourd'hui pour discuter de votre projet et découvrir comment l'IA peut révolutionner votre communication.
+              Contactez-nous dès aujourd&apos;hui pour discuter de votre projet et découvrir comment l&apos;IA peut révolutionner votre communication.
             </p>
             <Link
                 href="/contact"

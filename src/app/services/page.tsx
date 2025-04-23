@@ -6,7 +6,7 @@ export default function ServicesPage() {
                 <div className="container mx-auto px-4 text-center">
                     <h1 className="text-4xl font-bold mb-4">Nos Services</h1>
                     <p className="text-xl max-w-3xl mx-auto">
-                        Découvrez comment nous pouvons transformer votre communication grâce à l'IA et l'automatisation.
+                        Découvrez comment nous pouvons transformer votre communication grâce à l&apos;IA et l&apos;automatisation.
                     </p>
                 </div>
             </section>
@@ -23,7 +23,7 @@ export default function ServicesPage() {
                                 </div>
                                 <h2 className="text-3xl font-bold mb-4">Branding</h2>
                                 <p className="text-lg text-gray-700 mb-6">
-                                    Notre approche de branding intègre l'intelligence artificielle pour créer des identités de marque uniques et mémorables qui résonnent avec votre audience cible.
+                                    Notre approche de branding intègre l&apos;intelligence artificielle pour créer des identités de marque uniques et mémorables qui résonnent avec votre audience cible.
                                 </p>
                                 <ul className="space-y-2">
                                     <li className="flex items-start">
@@ -61,7 +61,7 @@ export default function ServicesPage() {
                                 </div>
                                 <h2 className="text-3xl font-bold mb-4">Création de Sites Web</h2>
                                 <p className="text-lg text-gray-700 mb-6">
-                                    Nous concevons des sites web intelligents et optimisés pour la conversion, avec une attention particulière à l'expérience utilisateur et la performance.
+                                    Nous concevons des sites web intelligents et optimisés pour la conversion, avec une attention particulière à l&apos;expérience utilisateur et la performance.
                                 </p>
                                 <ul className="space-y-2">
                                     <li className="flex items-start">
@@ -80,7 +80,7 @@ export default function ServicesPage() {
                                         <svg className="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
-                                        <span>Intégration d'outils d'IA et d'automatisation</span>
+                                        <span>Intégration d&apos;outils d&apos;IA et d&apos;automatisation</span>
                                     </li>
                                 </ul>
                             </div>

@@ -31,7 +31,7 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-semibold mb-4">Contact</h3>
                         <address className="not-italic text-gray-300">
-                            <p className="mb-2">123 Avenue de l'Innovation</p>
+                            <p className="mb-2">123 Avenue de l&apos;Innovation</p>
                             <p className="mb-2">75001 Paris, France</p>
                             <p className="mb-2">Email: contact@communik-via-ia.com</p>
                             <p className="mb-2">Téléphone: +33 1 23 45 67 89</p>

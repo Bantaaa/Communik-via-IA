@@ -8,7 +8,7 @@ export default function ContactPage() {
                 <div className="container mx-auto px-4 text-center">
                     <h1 className="text-4xl font-bold mb-4">Contactez-nous</h1>
                     <p className="text-xl max-w-3xl mx-auto">
-                        Vous avez un projet en tête ? Parlons-en ensemble et découvrez comment nous pouvons vous aider grâce à l'IA et l'automatisation.
+                        Vous avez un projet en tête ? Parlons-en ensemble et découvrez comment nous pouvons vous aider grâce à l&apos;IA et l&apos;automatisation.
                     </p>
                 </div>
             </section>
@@ -40,7 +40,7 @@ export default function ContactPage() {
                                 </div>
                                 <h3 className="text-xl font-semibold mb-2">Notre adresse</h3>
                                 <address className="not-italic text-gray-600">
-                                    <p>123 Avenue de l'Innovation</p>
+                                    <p>123 Avenue de l&apos;Innovation</p>
                                     <p>75001 Paris, France</p>
                                 </address>
                             </div>

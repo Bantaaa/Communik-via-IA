@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Communik via IA - Agence de Communication Nouvelle Génération',
-    description: 'Agence de communication intégrant l\'automatisation, l\'intelligence artificielle et des workflows intelligents.',
+    description: 'Agence de communication intégrant l&apos;automatisation, l&apos;intelligence artificielle et des workflows intelligents.',
 };
 
 export default function RootLayout({

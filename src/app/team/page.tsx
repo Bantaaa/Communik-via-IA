@@ -6,7 +6,7 @@ export default function TeamPage() {
                 <div className="container mx-auto px-4 text-center">
                     <h1 className="text-4xl font-bold mb-4">Notre Équipe</h1>
                     <p className="text-xl max-w-3xl mx-auto">
-                        Des experts passionnés par l'IA et l'automatisation au service de votre communication.
+                        Des experts passionnés par l&apos;IA et l&apos;automatisation au service de votre communication.
                     </p>
                 </div>
             </section>
@@ -22,7 +22,7 @@ export default function TeamPage() {
                                 <h3 className="text-xl font-bold mb-1">Sophie Martin</h3>
                                 <p className="text-blue-600 mb-4">Directrice & Stratège IA</p>
                                 <p className="text-gray-600 mb-4">
-                                    Experte en intelligence artificielle avec plus de 10 ans d'expérience dans la communication digitale.
+                                    Experte en intelligence artificielle avec plus de 10 ans d&apos;expérience dans la communication digitale.
                                 </p>
                             </div>
                         </div>
@@ -34,7 +34,7 @@ export default function TeamPage() {
                                 <h3 className="text-xl font-bold mb-1">Thomas Dubois</h3>
                                 <p className="text-blue-600 mb-4">Lead Développeur</p>
                                 <p className="text-gray-600 mb-4">
-                                    Architecte logiciel spécialisé dans l'automatisation et l'intégration des technologies d'IA.
+                                    Architecte logiciel spécialisé dans l&apos;automatisation et l&apos;intégration des technologies d&apos;IA.
                                 </p>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ export default function TeamPage() {
                                 <h3 className="text-xl font-bold mb-1">Emma Blanc</h3>
                                 <p className="text-blue-600 mb-4">Directrice Créative</p>
                                 <p className="text-gray-600 mb-4">
-                                    Spécialiste du branding et de l'UX design avec une approche centrée sur l'innovation.
+                                    Spécialiste du branding et de l&apos;UX design avec une approche centrée sur l&apos;innovation.
                                 </p>
                             </div>
                         </div>

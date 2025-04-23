@@ -20,9 +20,9 @@ export default function PortfolioPage() {
                             <div className="aspect-video bg-gray-200"></div>
                             <div className="p-6">
                                 <h3 className="text-xl font-bold mb-2">TechInnov</h3>
-                                <p className="text-blue-600 mb-2">Branding & Site Web</p>
+                                <p className="text-blue-600 mb-2">Branding &amp; Site Web</p>
                                 <p className="text-gray-600 mb-4">
-                                    Refonte complète de l'identité visuelle et création d'un site web optimisé pour la génération de leads.
+                                    Refonte complète de l&apos;identité visuelle et création d&apos;un site web optimisé pour la génération de leads.
                                 </p>
                             </div>
                         </div>
@@ -32,9 +32,9 @@ export default function PortfolioPage() {
                             <div className="aspect-video bg-gray-200"></div>
                             <div className="p-6">
                                 <h3 className="text-xl font-bold mb-2">EcoSolutions</h3>
-                                <p className="text-blue-600 mb-2">Stratégie IA & Automatisation</p>
+                                <p className="text-blue-600 mb-2">Stratégie IA &amp; Automatisation</p>
                                 <p className="text-gray-600 mb-4">
-                                    Mise en place d'un système de qualification de leads par IA et automatisation du processus de vente.
+                                    Mise en place d&apos;un système de qualification de leads par IA et automatisation du processus de vente.
                                 </p>
                             </div>
                         </div>
@@ -44,9 +44,9 @@ export default function PortfolioPage() {
                             <div className="aspect-video bg-gray-200"></div>
                             <div className="p-6">
                                 <h3 className="text-xl font-bold mb-2">ModeElégance</h3>
-                                <p className="text-blue-600 mb-2">E-commerce & Automatisation</p>
+                                <p className="text-blue-600 mb-2">E-commerce &amp; Automatisation</p>
                                 <p className="text-gray-600 mb-4">
-                                    Création d'une boutique en ligne avec personnalisation automatisée des recommandations produits.
+                                    Création d&apos;une boutique en ligne avec personnalisation automatisée des recommandations produits.
                                 </p>
                             </div>
                         </div>

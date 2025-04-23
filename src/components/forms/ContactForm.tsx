@@ -146,7 +146,7 @@ export default function ContactForm() {
             {/* Service interest field */}
             <div>
                 <label htmlFor="serviceInterest" className="block text-sm font-medium text-gray-700 mb-1">
-                    Service d'intérêt *
+                    Service d&apos;intérêt *
                 </label>
                 <select
                     id="serviceInterest"
