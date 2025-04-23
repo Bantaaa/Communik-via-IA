@@ -21,7 +21,7 @@ const fadeIn = {
 // Portfolio project data
 const projects = [
     {
-        
+
         title: "TechInnov",
         category: "Branding & Site Web",
         tags: ["branding", "web"],
