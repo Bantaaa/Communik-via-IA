@@ -1,4 +1,5 @@
 {
+  "name": "My workflow",
   "nodes": [
     {
       "parameters": {
@@ -10,238 +11,179 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        250,
-        300
-      ]
+        -100,
+        180
+      ],
+      "id": "b64fe6aa-0bf7-4eec-9e33-e3216ffdfce7",
+      "webhookId": "$WEBHOOK_ID"
     },
     {
       "parameters": {
-        "authentication": "serviceAccount",
         "operation": "append",
-        "documentId": "{{$env.GOOGLE_SHEETS_DOCUMENT_ID}}",
-        "sheetName": "Leads",
+        "documentId": {
+          "__rl": true,
+          "value": "$GOOGLE_SHEETS_DOCUMENT_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
         "columns": {
-          "mappingMode": "autoMapInputData",
+          "mappingMode": "defineBelow",
           "value": {
             "timestamp": "={{ $now.toISO() }}",
-            "name": "={{ $json.name }}",
-            "email": "={{ $json.email }}",
-            "company": "={{ $json.company }}",
-            "phone": "={{ $json.phone }}",
-            "serviceInterest": "={{ $json.serviceInterest }}",
-            "message": "={{ $json.message }}",
-            "status": "new",
-            "lastContact": "={{ $now.toISO() }}"
-          }
+            "email": "={{ $json.body.email }}",
+            "company": "={{ $json.body.company || '' }}",
+            "phone": "={{ $json.body.phone || '' }}",
+            "serviceInterest": "={{ $json.body.serviceInterest }}",
+            "message": "={{ $json.body.message }}",
+            "status": "=new",
+            "lastContact": "={{ $now.toISO() }}",
+            "name": "={{ $json.body.name }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "serviceInterest",
+              "displayName": "serviceInterest",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastContact",
+              "displayName": "lastContact",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
         },
-        "options": {
-          "valueInputMode": "RAW"
-        }
+        "options": {}
       },
       "name": "Google Sheets",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        450,
-        300
+        120,
+        180
       ],
+      "id": "1311d3d9-e3ad-45bc-b2ae-207adb7f196f",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "1",
-          "name": "Google Sheets Account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "authentication": "apiKey",
-        "model": "gpt-3.5-turbo",
-        "prompt": {
-          "promptType": "messages",
-          "messages": {
-            "values": [
-              {
-                "role": "system",
-                "content": "You are an assistant for a communication agency named 'Communik via IA' that specializes in branding, website creation, AI strategy, and automation. Your task is to analyze incoming contact form submissions and provide a summary, suggest an appropriate offer based on the message content, and categorize the need."
-              },
-              {
-                "role": "user",
-                "content": "=Name: {{ $json.name }}\nCompany: {{ $json.company || 'Not specified' }}\nService Interest: {{ $json.serviceInterest }}\nMessage: {{ $json.message }}\n\nPlease provide:\n1. A summary of the request (3-4 sentences)\n2. A suggested offer based on the content (2-3 sentences)\n3. Category of need (one of: branding, website, ai-strategy, automation, or multiple)"
-              }
-            ]
-          }
-        },
-        "options": {
-          "responseFormat": "json_object"
-        },
-        "jsonDefine": {
-          "values": {
-            "summary": "={{ $responseData.choices[0].message.content.summary }}",
-            "suggestedOffer": "={{ $responseData.choices[0].message.content.suggestedOffer }}",
-            "category": "={{ $responseData.choices[0].message.content.category }}"
-          }
-        }
-      },
-      "name": "OpenAI",
-      "type": "n8n-nodes-base.openAi",
-      "typeVersion": 1,
-      "position": [
-        650,
-        300
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "2",
-          "name": "OpenAI Account"
+          "id": "$GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets account"
         }
       }
     },
     {
       "parameters": {
         "fromEmail": "contact@communik-via-ia.com",
-        "toEmail": "={{ $json.email }}",
+        "toEmail": "={{ $json.email || $DEFAULT_EMAIL }}",
         "subject": "Merci pour votre message - Communik via IA",
-        "html": "<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n  <div style=\"background-color: #1D4ED8; padding: 20px; text-align: center;\">\n    <h1 style=\"color: white; margin: 0;\">Communik via IA</h1>\n  </div>\n  \n  <div style=\"padding: 30px; border: 1px solid #e5e5e5; border-top: none;\">\n    <p>Bonjour {{ $json.name }},</p>\n    \n    <p>Merci d'avoir pris contact avec Communik via IA. Nous avons bien reçu votre demande concernant nos services de <strong>{{ $json.serviceInterest }}</strong>.</p>\n    \n    <div style=\"margin: 25px 0; padding: 15px; background-color: #f8f9fa; border-left: 4px solid #1D4ED8;\">\n      <h3 style=\"margin-top: 0;\">Notre analyse de votre besoin :</h3>\n      <p>{{ $json.aiAnalysis.summary }}</p>\n      \n      <h3>Notre suggestion :</h3>\n      <p>{{ $json.aiAnalysis.suggestedOffer }}</p>\n    </div>\n    \n    <p>Nous aimerions discuter plus en détail de votre projet. Réservez un créneau avec notre équipe en cliquant sur le lien ci-dessous :</p>\n    \n    <div style=\"text-align: center; margin: 30px 0;\">\n      <a href=\"https://calendly.com/communik-via-ia/30min\" style=\"background-color: #1D4ED8; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold;\">Prendre Rendez-vous</a>\n    </div>\n    \n    <p>Si vous avez des questions, n'hésitez pas à nous contacter directement à cette adresse email.</p>\n    \n    <p>Cordialement,<br>L'équipe Communik via IA</p>\n  </div>\n  \n  <div style=\"text-align: center; padding: 20px; color: #6b7280; font-size: 14px;\">\n    <p>Communik via IA - 123 Avenue de l'Innovation, 75001 Paris<br>\n    contact@communik-via-ia.com - +33 1 23 45 67 89</p>\n  </div>\n</div>",
+        "html": "=<div style=\"font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.5;\">\n  <!-- Header with gradient background -->\n  <div style=\"background-color: #1D4ED8; padding: 25px; text-align: center; border-radius: 8px 8px 0 0;\">\n    <h1 style=\"color: white; margin: 0; font-weight: 600; letter-spacing: 0.5px;\">Communik via IA</h1>\n  </div>\n  \n  <!-- Main content -->\n  <div style=\"padding: 35px; border: 1px solid #e5e5e5; border-top: none; background-color: #ffffff; border-radius: 0 0 8px 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);\">\n    <!-- Greeting -->\n    <p style=\"font-size: 17px;\">Bonjour <strong>{{ $json.name }}</strong>,</p>\n    \n    <!-- Introduction -->\n    <p style=\"margin-bottom: 25px;\">Merci d'avoir pris contact avec Communik via IA. Nous avons bien reçu votre demande concernant nos services de <strong style=\"color: #1D4ED8;\">{{ $json.serviceInterest }}</strong>.</p>\n    \n    <!-- Analysis box -->\n    <div style=\"margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #1D4ED8; border-radius: 4px;\">\n      <h3 style=\"margin-top: 0; color: #1D4ED8; font-size: 18px;\">Notre analyse de votre besoin :</h3>\n      <p style=\"margin-bottom: 20px; color: #444;\">{{ JSON.parse($json.text).summary }}</p>\n      \n      <h3 style=\"color: #1D4ED8; font-size: 18px;\">Notre suggestion :</h3>\n      <p style=\"color: #444;\">{{ JSON.parse($json.text).suggestedOffer }}</p>\n    </div>\n    \n    <!-- Call to action -->\n    <p style=\"margin-bottom: 25px;\">Nous aimerions discuter plus en détail de votre projet. Réservez un créneau avec notre équipe en cliquant sur le lien ci-dessous :</p>\n    \n    <!-- Button -->\n    <div style=\"text-align: center; margin: 35px 0;\">\n      <a href=\"$CALENDLY_URL\" style=\"background-color: #1D4ED8; color: white; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;\">Prendre Rendez-vous</a>\n    </div>\n    \n    <!-- Closing -->\n    <p>Si vous avez des questions, n'hésitez pas à nous contacter directement à cette adresse email.</p>\n    \n    <p style=\"margin-top: 30px; border-top: 1px solid #eaeaea; padding-top: 20px;\">\n      Cordialement,<br>\n      <strong>L'équipe Communik via IA</strong>\n    </p>\n  </div>\n  \n  <!-- Footer -->\n  <div style=\"text-align: center; padding: 20px; color: #6b7280; font-size: 14px;\">\n    <p>\n      Communik via IA - 123 Avenue de l'Innovation, 75001 Paris<br>\n      contact@communik-via-ia.com - +33 1 23 45 67 89\n    </p>\n  </div>\n</div>",
         "options": {}
       },
       "name": "Send Email",
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 1,
       "position": [
-        850,
-        300
+        716,
+        -20
       ],
+      "id": "5b5afe88-3d3b-4f13-af7e-be2f2e467655",
       "credentials": {
         "smtp": {
-          "id": "3",
-          "name": "Email Account"
+          "id": "$SMTP_CREDENTIAL_ID",
+          "name": "Email Service"
         }
       }
     },
     {
       "parameters": {
-        "url": "={{ $env.SLACK_WEBHOOK_URL }}",
-        "jsonParameters": true,
-        "options": {},
-        "bodyParametersJson": {
-          "blocks": [
-            {
-              "type": "header",
-              "text": {
-                "type": "plain_text",
-                "text": "✨ Nouveau contact reçu !",
-                "emoji": true
-              }
-            },
-            {
-              "type": "section",
-              "fields": [
-                {
-                  "type": "mrkdwn",
-                  "text": "*Nom:*\n{{ $json.name }}"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "*Email:*\n{{ $json.email }}"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "*Entreprise:*\n{{ $json.company || 'Non spécifié' }}"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "*Téléphone:*\n{{ $json.phone || 'Non spécifié' }}"
-                }
-              ]
-            },
-            {
-              "type": "section",
-              "fields": [
-                {
-                  "type": "mrkdwn",
-                  "text": "*Service:*\n{{ $json.serviceInterest }}"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "*Catégorie IA:*\n{{ $json.aiAnalysis.category }}"
-                }
-              ]
-            },
-            {
-              "type": "section",
-              "text": {
-                "type": "mrkdwn",
-                "text": "*Message:*\n{{ $json.message }}"
-              }
-            },
-            {
-              "type": "section",
-              "text": {
-                "type": "mrkdwn",
-                "text": "*Analyse IA:*\n{{ $json.aiAnalysis.summary }}"
-              }
-            },
-            {
-              "type": "actions",
-              "elements": [
-                {
-                  "type": "button",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Voir dans Google Sheets",
-                    "emoji": true
-                  },
-                  "url": "https://docs.google.com/spreadsheets/d/{{ $env.GOOGLE_SHEETS_DOCUMENT_ID }}"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "name": "Slack Notification",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        850,
-        450
-      ]
-    },
-    {
-      "parameters": {
-        "url": "https://api.twilio.com/2010-04-01/Accounts/{{ $env.TWILIO_ACCOUNT_SID }}/Messages.json",
-        "authentication": "basicAuth",
-        "method": "POST",
-        "options": {
-          "formData": {
-            "To": "=whatsapp:{{ $env.WHATSAPP_TO_NUMBER }}",
-            "From": "=whatsapp:{{ $env.TWILIO_WHATSAPP_NUMBER }}",
-            "Body": "=📣 *Nouveau contact reçu !*\n\nNom: {{ $json.name }}\nEmail: {{ $json.email }}\nEntreprise: {{ $json.company || 'Non spécifié' }}\nService: {{ $json.serviceInterest }}\n\n_Catégorie IA: {{ $json.aiAnalysis.category }}_"
-          }
-        }
-      },
-      "name": "WhatsApp Notification",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        850,
-        600
-      ],
-      "credentials": {
-        "httpBasicAuth": {
-          "id": "4",
-          "name": "Twilio Auth"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "triggerTimes": {
-          "item": [
-            {
-              "mode": "everyX",
-              "value": 1,
-              "unit": "days"
-            }
+        "rule": {
+          "interval": [
+            {}
           ]
         }
       },
@@ -249,32 +191,37 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1,
       "position": [
-        250,
-        750
-      ]
+        -100,
+        640
+      ],
+      "id": "5aa74b1a-825b-4ce2-9220-27010b4f65c8"
     },
     {
       "parameters": {
-        "authentication": "serviceAccount",
-        "operation": "read",
-        "documentId": "={{ $env.GOOGLE_SHEETS_DOCUMENT_ID }}",
-        "sheetName": "Leads",
-        "range": "A:J",
-        "options": {
-          "headerRow": true
-        }
+        "documentId": {
+          "__rl": true,
+          "value": "$GOOGLE_SHEETS_DOCUMENT_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
+        "options": {}
       },
       "name": "Get All Leads",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        450,
-        750
+        120,
+        640
       ],
+      "id": "c360f15f-c1f5-47c7-b6f1-dfc313647806",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "1",
-          "name": "Google Sheets Account"
+          "id": "$GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets account"
         }
       }
     },
@@ -290,8 +237,8 @@
           "dateTime": [
             {
               "value1": "={{ $json.lastContact }}",
-              "value2": "={{ $now.minus({days: 2}).toISO() }}",
-              "operation": "isBefore"
+              "operation": "before",
+              "value2": "={{ $now.minus({days: 2}).toISO() }}"
             }
           ]
         }
@@ -300,64 +247,295 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        650,
-        750
-      ]
+        340,
+        640
+      ],
+      "id": "192da33f-c5f6-4cf0-bce1-1283a02e4587"
     },
     {
       "parameters": {
         "fromEmail": "contact@communik-via-ia.com",
-        "toEmail": "={{ $json.email }}",
+        "toEmail": "={{ $json.email || $DEFAULT_EMAIL }}",
         "subject": "Suivi - Votre demande chez Communik via IA",
-        "html": "<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n  <div style=\"background-color: #1D4ED8; padding: 20px; text-align: center;\">\n    <h1 style=\"color: white; margin: 0;\">Communik via IA</h1>\n  </div>\n  \n  <div style=\"padding: 30px; border: 1px solid #e5e5e5; border-top: none;\">\n    <p>Bonjour {{ $json.name }},</p>\n    \n    <p>Nous avons remarqué que vous nous avez contacté il y a quelques jours concernant nos services de <strong>{{ $json.serviceInterest }}</strong>.</p>\n    \n    <p>Nous aimerions savoir si vous souhaitez toujours discuter de votre projet avec notre équipe. Vous pouvez prendre rendez-vous en cliquant sur le lien ci-dessous :</p>\n    \n    <div style=\"text-align: center; margin: 30px 0;\">\n      <a href=\"https://calendly.com/communik-via-ia/30min\" style=\"background-color: #1D4ED8; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold;\">Prendre Rendez-vous</a>\n    </div>\n    \n    <p>Si vous avez des questions ou si vos besoins ont changé, n'hésitez pas à nous en informer.</p>\n    \n    <p>Cordialement,<br>L'équipe Communik via IA</p>\n  </div>\n  \n  <div style=\"text-align: center; padding: 20px; color: #6b7280; font-size: 14px;\">\n    <p>Communik via IA - 123 Avenue de l'Innovation, 75001 Paris<br>\n    contact@communik-via-ia.com - +33 1 23 45 67 89</p>\n  </div>\n</div>",
+        "html": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n  <div style=\"background-color: #1D4ED8; padding: 20px; text-align: center;\">\n    <h1 style=\"color: white; margin: 0;\">Communik via IA</h1>\n  </div>\n  \n  <div style=\"padding: 30px; border: 1px solid #e5e5e5; border-top: none;\">\n    <p>Bonjour {{ $json.name }},</p>\n    \n    <p>Nous avons remarqué que vous nous avez contacté il y a quelques jours concernant nos services de <strong>{{ $json.serviceInterest }}</strong>.</p>\n    \n    <p>Nous aimerions savoir si vous souhaitez toujours discuter de votre projet avec notre équipe. Vous pouvez prendre rendez-vous en cliquant sur le lien ci-dessous :</p>\n    \n    <div style=\"text-align: center; margin: 30px 0;\">\n      <a href=\"$CALENDLY_URL\" style=\"background-color: #1D4ED8; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold;\">Prendre Rendez-vous</a>\n    </div>\n    \n    <p>Si vous avez des questions ou si vos besoins ont changé, n'hésitez pas à nous en informer.</p>\n    \n    <p>Cordialement,<br>L'équipe Communik via IA</p>\n  </div>\n  \n  <div style=\"text-align: center; padding: 20px; color: #6b7280; font-size: 14px;\">\n    <p>Communik via IA - 123 Avenue de l'Innovation, 75001 Paris<br>\n    contact@communik-via-ia.com - +33 1 23 45 67 89</p>\n  </div>\n</div>",
         "options": {}
       },
       "name": "Send Follow-up Email",
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 1,
       "position": [
-        850,
-        750
+        560,
+        640
       ],
+      "id": "7dc5908c-c602-44c2-97e7-b8d9018c0835",
       "credentials": {
         "smtp": {
-          "id": "3",
-          "name": "Email Account"
+          "id": "$SMTP_CREDENTIAL_ID",
+          "name": "Email Service"
         }
       }
     },
     {
       "parameters": {
-        "authentication": "serviceAccount",
         "operation": "update",
-        "documentId": "={{ $env.GOOGLE_SHEETS_DOCUMENT_ID }}",
-        "sheetName": "Leads",
+        "documentId": {
+          "__rl": true,
+          "value": "$GOOGLE_SHEETS_DOCUMENT_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "status": "followed-up",
-            "lastContact": "={{ $now.toISO() }}"
-          }
+            "status": "=followed-up",
+            "lastContact": "={{ $now.toISO() }}",
+            "email": "={{ $json.accepted }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "serviceInterest",
+              "displayName": "serviceInterest",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastContact",
+              "displayName": "lastContact",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
         },
-        "options": {
-          "valueInputMode": "RAW"
-        }
+        "options": {}
       },
       "name": "Update Lead Status",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1050,
-        750
+        780,
+        640
       ],
+      "id": "c0b65762-cf56-4cd6-a1da-d6c0336e9ace",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "1",
-          "name": "Google Sheets Account"
+          "id": "$GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "$CLAUDE_MODEL_ID",
+          "mode": "list",
+          "cachedResultName": "Claude 3.5 Sonnet (New)"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        428,
+        400
+      ],
+      "id": "26223a4f-62d4-466e-bd7b-ec6a86f39876",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "$ANTHROPIC_CREDENTIAL_ID",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Name: {{ $json.name }}\nCompany: {{ $json.company || 'Not specified' }}\nService Interest: {{ $json.serviceInterest }}\nMessage: {{ $json.message }}\n\nAs the Communik via IA agency, write a personalized response:\n1. A friendly summary of how you understand their request (3-4 sentences)\n2. A suggested offer written in a conversational, engaging style (2-3 sentences)\n3. Category of need (one of: branding, website, ai-strategy, automation, or multiple)\n\nWrite in first person as if you are directly responding to the client. Use a warm, professional tone.\nFormat your response as a valid JSON object with fields \"summary\", \"suggestedOffer\", and \"category\".",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a communication professional at Communik via IA agency, writing personalized responses to potential clients(using the same language they are speaking to you).  Name: {{ $json.name }} Company: {{ $json.company || 'Not specified' }} Service Interest: {{ $json.serviceInterest }} Message: {{ $json.message }}  Write a response with: 1. A friendly, warm summary of how you understand their request (3-4 sentences) 2. A suggested offer written in a conversational, engaging style (2-3 sentences) 3. Category of need (one of: branding, website, ai-strategy, automation, or multiple)  Use a warm, professional tone as if speaking directly to the client. Your response must be a valid JSON object with fields \"summary\", \"suggestedOffer\", and \"category\"."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        340,
+        180
+      ],
+      "id": "cd629a99-7920-49fe-8a0e-6547714da400",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "$SLACK_WEBHOOK_URL",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "✨ Nouveau contact reçu !"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Slack Notification1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        716,
+        380
+      ],
+      "id": "f2218b33-fb9b-48a4-bf0e-7bbaeb42f854"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "$TWILIO_API_URL",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "$TWILIO_AUTH_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "To",
+              "value": "$WHATSAPP_TO_NUMBER"
+            },
+            {
+              "name": "From",
+              "value": "$TWILIO_WHATSAPP_NUMBER"
+            },
+            {
+              "name": "Body",
+              "value": "✨ Nouveau contact reçu !"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Whatsapp Notification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        716,
+        180
+      ],
+      "id": "c7462ca6-d1ac-4f49-b070-ead9b6843661"
     }
   ],
+  "pinData": {},
   "connections": {
     "Webhook": {
       "main": [
@@ -374,28 +552,7 @@
       "main": [
         [
           {
-            "node": "OpenAI",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI": {
-      "main": [
-        [
-          {
-            "node": "Send Email",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Slack Notification",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "WhatsApp Notification",
+            "node": "Basic LLM Chain",
             "type": "main",
             "index": 0
           }
@@ -445,6 +602,49 @@
           }
         ]
       ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Slack Notification1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Whatsapp Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
-  }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6d373a7e-9df2-438f-96e8-5b5982446d7c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "$INSTANCE_ID"
+  },
+  "id": "$WORKFLOW_ID",
+  "tags": []
 }
