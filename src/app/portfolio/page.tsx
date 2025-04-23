@@ -329,7 +329,7 @@ export default function PortfolioPage() {
 
                                 {/* Testimonial content */}
                                 <div className="relative z-10">
-                                    <p className="text-gray-light mb-6 pt-8 px-4">"{testimonial.quote}"</p>
+                                    <p className="text-gray-light mb-6 pt-8 px-4">&ldquo;{testimonial.quote}&rdquo;</p>
 
                                     <div className="flex items-center justify-between">
                                         <div>
@@ -365,7 +365,7 @@ export default function PortfolioPage() {
                             <div className="mb-2">
                                 <StarIcon className="w-8 h-8 mx-auto text-secondary mb-4 animate-pulse" />
                             </div>
-                            <h2 className="text-3xl font-cinzel font-semibold mb-4 text-foreground">Prêt à créer votre propre constellation &apos;?</h2>
+                            <h2 className="text-3xl font-cinzel font-semibold mb-4 text-foreground">Prêt à créer votre propre constellation ?</h2>
 
                             <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-light">
                                 Contactez-nous pour discuter de votre projet et d&apos;écouvrir comment nous pouvons aligner votre communication avec les forces cosmiques.

@@ -80,7 +80,8 @@ export default function ContactForm() {
                 setSubmitSuccess(false);
                 setSubmitMessage(result.message || 'Une erreur cosmique est survenue. Veuillez réessayer.');
             }
-        } catch (error) {
+        } catch {
+            // Removed the unused 'error' variable
             setSubmitSuccess(false);
             setSubmitMessage('Une perturbation astrale est survenue. Veuillez réessayer.');
         } finally {

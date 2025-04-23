@@ -7,10 +7,3 @@ export interface ContactFormData {
     message: string;
     serviceInterest: string; // branding, site-creation, ai-strategy, automation
 }
-
-// API response types
-export interface ApiResponse {
-    success: boolean;
-    message: string;
-    data?: any;
-}
