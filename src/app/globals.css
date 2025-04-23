@@ -1,26 +1,253 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0F0B1E;
+  --foreground: #E4E1F1;
+  --primary: #9D71EA;
+  --primary-light: #B490F0;
+  --primary-dark: #7744D9;
+  --secondary: #F2C94C;
+  --secondary-light: #F7E0A0;
+  --secondary-dark: #E6AD0F;
+  --accent-1: #FF6B95;
+  --accent-2: #4CC4F2;
+  --dark-1: #1A1433;
+  --dark-2: #241A45;
+  --gray-light: #9B97A9;
+  --gray: #686175;
+  --gray-dark: #3D3A47;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Special Effects */
+  --glow-primary: 0 0 10px rgba(157, 113, 234, 0.5);
+  --glow-secondary: 0 0 10px rgba(242, 201, 76, 0.5);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Montserrat', sans-serif;
+  --font-display: 'Cinzel', serif;
+  --font-mono: 'Space Mono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base Styles */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-image:
+          radial-gradient(circle at 10% 20%, rgba(157, 113, 234, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 90% 50%, rgba(242, 201, 76, 0.02) 0%, transparent 70%),
+          radial-gradient(circle at 50% 90%, rgba(76, 196, 242, 0.03) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+/* Star Animation */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle var(--duration, 5s) infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: var(--intensity, 0.8); transform: scale(var(--scale, 1.5)); }
+}
+
+/* Cosmic Card */
+.cosmic-card {
+  background: linear-gradient(to bottom right, var(--dark-1), var(--dark-2));
+  border: 1px solid rgba(157, 113, 234, 0.1);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.cosmic-card:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+  transform: translateY(-3px);
+}
+
+.cosmic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cosmic-card:hover::before {
+  opacity: 1;
+}
+
+/* Cosmic Button */
+.cosmic-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: none;
+  outline: none;
+}
+
+.cosmic-btn:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+  transform: translateY(-2px);
+}
+
+.cosmic-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.cosmic-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0));
+  transform: rotate(30deg);
+  transition: all 0.3s ease;
+}
+
+.cosmic-btn:hover::after {
+  transform: rotate(30deg) translate(10%, 10%);
+}
+
+/* Cosmic Input */
+.cosmic-input {
+  background-color: var(--dark-1);
+  border: 1px solid var(--gray-dark);
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-inner);
+}
+
+.cosmic-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(157, 113, 234, 0.2);
+  outline: none;
+}
+
+.cosmic-input::placeholder {
+  color: var(--gray);
+}
+
+/* Cosmic Select */
+.cosmic-select {
+  background-color: var(--dark-1);
+  border: 1px solid var(--gray-dark);
+  color: var(--foreground);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239B97A9'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.cosmic-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(157, 113, 234, 0.2);
+  outline: none;
+}
+
+/* Animations */
+@keyframes floatIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float-in {
+  animation: floatIn 0.6s ease-out forwards;
+}
+
+/* Star background */
+.star-bg {
+  position: relative;
+}
+
+.star-bg::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image:
+          radial-gradient(1px 1px at 10% 10%, var(--secondary) 100%, transparent),
+          radial-gradient(1px 1px at 20% 50%, var(--secondary) 100%, transparent),
+          radial-gradient(1px 1px at 30% 30%, rgba(255, 255, 255, 0.8) 100%, transparent),
+          radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.8) 100%, transparent),
+          radial-gradient(1px 1px at 50% 40%, var(--secondary) 100%, transparent),
+          radial-gradient(1px 1px at 60% 90%, rgba(255, 255, 255, 0.8) 100%, transparent),
+          radial-gradient(1px 1px at 70% 15%, var(--secondary) 100%, transparent),
+          radial-gradient(1px 1px at 80% 60%, rgba(255, 255, 255, 0.8) 100%, transparent),
+          radial-gradient(1px 1px at 90% 25%, var(--secondary) 100%, transparent);
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Constellation styling */
+.constellation {
+  position: relative;
+}
+
+.constellation::before,
+.constellation::after {
+  content: '';
+  position: absolute;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
 }

@@ -1,14 +1,32 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat, Cinzel, Space_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import StarsBackground from '@/components/astro/StarsBackground';
 
-const inter = Inter({ subsets: ['latin'] });
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    variable: '--font-montserrat',
+    display: 'swap'
+});
+
+const cinzel = Cinzel({
+    subsets: ['latin'],
+    variable: '--font-cinzel',
+    display: 'swap',
+    weight: ['400', '500', '600', '700']
+});
+
+const spaceMono = Space_Mono({
+    subsets: ['latin'],
+    variable: '--font-space-mono',
+    weight: ['400', '700']
+});
 
 export const metadata: Metadata = {
-    title: 'Communik via IA - Agence de Communication Nouvelle Génération',
-    description: 'Agence de communication intégrant l\'automatisation, l\'intelligence artificielle et des workflows intelligents.',
+    title: 'Astro Communik - Communication Cosmique',
+    description: 'Agence de communication cosmique intégrant l\'automatisation, l\'intelligence artificielle et des workflows stellaires.',
 };
 
 export default function RootLayout({
@@ -18,10 +36,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang="fr">
-        <body className={inter.className}>
+        <body className={`${montserrat.variable} ${cinzel.variable} ${spaceMono.variable}`}>
+        <StarsBackground />
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow">
+            <main className="flex-grow relative z-10">
                 {children}
             </main>
             <Footer />
