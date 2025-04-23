@@ -26,7 +26,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
     title: 'Astro Communik - Communication Cosmique',
-    description: 'Agence de communication cosmique intégrant l\'automatisation, l\'intelligence artificielle et des workflows stellaires.',
+    description: 'Agence de communication cosmique intégrant l&apos;automatisation, l&apos;intelligence artificielle et des workflows stellaires.',
 };
 
 export default function RootLayout({

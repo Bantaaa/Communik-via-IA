@@ -9,7 +9,7 @@ const services = [
     {
         title: 'Branding Cosmique',
         icon: '♈', // Aries
-        description: 'Création d\'identité de marque alignée avec les énergies cosmiques et amplifiée par l\'IA.',
+        description: 'Création d&apos;identité de marque alignée avec les énergies cosmiques et amplifiée par l&apos;IA.',
         link: '/services#branding'
     },
     {
@@ -21,7 +21,7 @@ const services = [
     {
         title: 'Stratégie Astrale',
         icon: '♊', // Gemini
-        description: 'Intégration de l\'intelligence artificielle dans votre communication pour des résultats qui transcendent.',
+        description: 'Intégration de l&apos;intelligence artificielle dans votre communication pour des résultats qui transcendent.',
         link: '/services#strategie'
     },
     {

@@ -25,20 +25,20 @@ const projects = [
         title: "TechInnov",
         category: "Branding & Site Web",
         tags: ["branding", "web"],
-        description: "Refonte complète de l'identité visuelle et création d'un site web optimisé pour la génération de leads, aligné avec les énergies cosmiques de l'innovation.",
+        description: "Refonte complète de l&apos;identité visuelle et création d&apos;un site web optimisé pour la génération de leads, aligné avec les énergies cosmiques de l&apos;innovation.",
         zodiacElement: "♈", // Aries - Fire sign for innovation
         gradient: "from-accent-1/20 to-secondary/10",
         results: [
             "Augmentation de 75% des leads qualifiés",
-            "Refonte complète de l'identité de marque",
-            "Mise en place d'un système de qualification automatisé"
+            "Refonte complète de l&apos;identité de marque",
+            "Mise en place d&apos;un système de qualification automatisé"
         ]
     },
     {
         title: "EcoSolutions",
         category: "Stratégie IA & Automatisation",
         tags: ["ai", "automation"],
-        description: "Mise en place d'un système de qualification de leads par IA et automatisation du processus de vente pour une entreprise éco-responsable en harmonie avec les forces naturelles.",
+        description: "Mise en place d&apos;un système de qualification de leads par IA et automatisation du processus de vente pour une entreprise éco-responsable en harmonie avec les forces naturelles.",
         zodiacElement: "♉", // Taurus - Earth sign for eco-solutions
         gradient: "from-primary/20 to-accent-2/10",
         results: [
@@ -51,12 +51,12 @@ const projects = [
         title: "ModeÉlégance",
         category: "E-commerce & Automatisation",
         tags: ["web", "automation"],
-        description: "Création d'une boutique en ligne avec personnalisation automatisée des recommandations produits basée sur l'alignement cosmique des préférences clients.",
+        description: "Création d&apos;une boutique en ligne avec personnalisation automatisée des recommandations produits basée sur l&apos;alignement cosmique des préférences clients.",
         zodiacElement: "♌", // Leo - For elegance and style
         gradient: "from-secondary/20 to-primary/10",
         results: [
             "Augmentation de 120% du panier moyen",
-            "Personnalisation avancée basée sur l'IA",
+            "Personnalisation avancée basée sur l&apos;IA",
             "Système de recommandation avec 92% de précision"
         ]
     },
@@ -64,11 +64,11 @@ const projects = [
         title: "SantéZen",
         category: "Stratégie IA & Site Web",
         tags: ["ai", "web"],
-        description: "Développement d'une plateforme de santé intégrant un chatbot d'orientation des patients et un système de prise de rendez-vous aligné avec les rythmes biologiques.",
+        description: "Développement d&apos;une plateforme de santé intégrant un chatbot d&apos;orientation des patients et un système de prise de rendez-vous aligné avec les rythmes biologiques.",
         zodiacElement: "♋", // Cancer - For health and care
         gradient: "from-accent-2/20 to-primary/10",
         results: [
-            "Réduction de 60% du temps d'attente",
+            "Réduction de 60% du temps d&apos;attente",
             "Amélioration de 45% de la satisfaction client",
             "Système prédictif de gestion des flux de patients"
         ]
@@ -77,7 +77,7 @@ const projects = [
         title: "FinanceVision",
         category: "Branding & Automatisation",
         tags: ["branding", "automation"],
-        description: "Création d'une identité de marque innovante et mise en place d'un système de reporting automatisé pour un cabinet de conseil financier.",
+        description: "Création d&apos;une identité de marque innovante et mise en place d&apos;un système de reporting automatisé pour un cabinet de conseil financier.",
         zodiacElement: "♎", // Libra - For balance and finances
         gradient: "from-primary/20 to-secondary/10",
         results: [
@@ -90,7 +90,7 @@ const projects = [
         title: "VoyageCosmos",
         category: "Site Web & Stratégie IA",
         tags: ["web", "ai"],
-        description: "Conception d'un site web immersif pour une agence de voyage avec système de recommandation basé sur les affinités cosmiques des voyageurs.",
+        description: "Conception d&apos;un site web immersif pour une agence de voyage avec système de recommandation basé sur les affinités cosmiques des voyageurs.",
         zodiacElement: "♐", // Sagittarius - For travel and exploration
         gradient: "from-secondary/20 to-accent-1/10",
         results: [
@@ -155,7 +155,7 @@ export default function PortfolioPage() {
                             custom={0.3}
                             className="text-xl max-w-2xl mx-auto text-gray-light"
                         >
-                            Découvrez nos projets récents et comment nous aidons nos clients à transformer leur communication par l'alignement cosmique.
+                            Découvrez nos projets récents et comment nous aidons nos clients à transformer leur communication par l&apos;alignement cosmique.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -292,25 +292,25 @@ export default function PortfolioPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                         {[
                             {
-                                quote: "L'équipe d'Astro Communik a complètement transformé notre présence en ligne. Leur approche holistique et leur expertise en IA ont créé une connexion profonde avec notre audience.",
+                                quote: "L&apos;équipe d&apos;Astro Communik a complètement transformé notre présence en ligne. Leur approche holistique et leur expertise en IA ont créé une connexion profonde avec notre audience.",
                                 author: "Sophie Durand",
                                 company: "TechInnov",
                                 zodiac: "♌"
                             },
                             {
-                                quote: "Grâce à leur système d'automatisation, nous avons pu réduire drastiquement nos coûts d'acquisition client tout en améliorant la qualité de notre service.",
+                                quote: "Grâce à leur système d&apos;automatisation, nous avons pu réduire drastiquement nos coûts d&apos;acquisition client tout en améliorant la qualité de notre service.",
                                 author: "Marc Lefebvre",
                                 company: "EcoSolutions",
                                 zodiac: "♉"
                             },
                             {
-                                quote: "L'intuition cosmique de leur stratégie a permis à notre e-commerce de se démarquer dans un secteur saturé. Les résultats ont dépassé toutes nos espérances.",
+                                quote: "L&apos;intuition cosmique de leur stratégie a permis à notre e-commerce de se démarquer dans un secteur saturé. Les résultats ont dépassé toutes nos espérances.",
                                 author: "Émilie Laurent",
                                 company: "ModeÉlégance",
                                 zodiac: "♌"
                             },
                             {
-                                quote: "La refonte de notre marque et l'automatisation de nos processus ont créé une harmonie parfaite entre notre vision et notre exécution quotidienne.",
+                                quote: "La refonte de notre marque et l&apos;automatisation de nos processus ont créé une harmonie parfaite entre notre vision et notre exécution quotidienne.",
                                 author: "Thomas Mercier",
                                 company: "FinanceVision",
                                 zodiac: "♎"

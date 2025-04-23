@@ -22,7 +22,7 @@ const teamMembers = [
     {
         name: 'Sophie Martin',
         role: 'Directrice & Stratège Cosmique',
-        bio: 'Experte en intelligence artificielle avec plus de 10 ans d\'expérience dans la communication stellaire. Née sous le signe du Lion.',
+        bio: 'Experte en intelligence artificielle avec plus de 10 ans d&apos;expérience dans la communication stellaire. Née sous le signe du Lion.',
         zodiacSign: '♌', // Leo
         speciality: 'Stratégie & Vision',
         gradient: 'from-primary to-accent-1'
@@ -30,7 +30,7 @@ const teamMembers = [
     {
         name: 'Thomas Dubois',
         role: 'Architecte des Étoiles',
-        bio: 'Maître en développement d\'architectures stellaires et spécialiste de l\'automatisation des systèmes cosmiques. Né sous le signe du Verseau.',
+        bio: 'Maître en développement d&apos;architectures stellaires et spécialiste de l&apos;automatisation des systèmes cosmiques. Né sous le signe du Verseau.',
         zodiacSign: '♒', // Aquarius
         speciality: 'Développement & Automatisation',
         gradient: 'from-secondary to-accent-2'
@@ -38,7 +38,7 @@ const teamMembers = [
     {
         name: 'Emma Blanc',
         role: 'Directrice Créative Astrale',
-        bio: 'Visionnaire du design et de l\'expérience utilisateur avec une approche centrée sur les énergies créatives de l\'univers. Née sous le signe des Gémeaux.',
+        bio: 'Visionnaire du design et de l&apos;expérience utilisateur avec une approche centrée sur les énergies créatives de l&apos;univers. Née sous le signe des Gémeaux.',
         zodiacSign: '♊', // Gemini
         speciality: 'Design & UX',
         gradient: 'from-accent-2 to-primary'
@@ -62,7 +62,7 @@ const teamMembers = [
     {
         name: 'Alexandre Dupont',
         role: 'Développeur Stellaire',
-        bio: 'Architecte de sites web et d\'applications qui capturent l\'essence de votre marque dans le cosmos numérique. Né sous le signe du Sagittaire.',
+        bio: 'Architecte de sites web et d&apos;applications qui capturent l&apos;essence de votre marque dans le cosmos numérique. Né sous le signe du Sagittaire.',
         zodiacSign: '♐', // Sagittarius
         speciality: 'Web & Mobile',
         gradient: 'from-secondary to-primary'
@@ -98,7 +98,7 @@ export default function TeamPage() {
                             custom={0.2}
                             className="text-4xl font-cinzel font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent-2"
                         >
-                            L'Équipe Astrale
+                            L&apos;Équipe Astrale
                         </motion.h1>
 
                         <motion.p
@@ -106,7 +106,7 @@ export default function TeamPage() {
                             custom={0.3}
                             className="text-xl max-w-2xl mx-auto text-gray-light"
                         >
-                            Des experts passionnés par l'astrologie numérique, l'IA et l'automatisation au service de votre communication cosmique.
+                            Des experts passionnés par l&apos;astrologie numérique, l&apos;IA et l&apos;automatisation au service de votre communication cosmique.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -210,7 +210,7 @@ export default function TeamPage() {
                             },
                             {
                                 title: 'Harmonie Cosmique',
-                                description: 'Nous créons une synergie parfaite entre l\'humain, la technologie et l\'intelligence artificielle.',
+                                description: 'Nous créons une synergie parfaite entre l&apos;humain, la technologie et l&apos;intelligence artificielle.',
                                 icon: (
                                     <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
                                         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />

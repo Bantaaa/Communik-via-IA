@@ -63,7 +63,7 @@ export default function ServicesPage() {
                             custom={0.3}
                             className="text-xl max-w-2xl mx-auto text-gray-light"
                         >
-                            Découvrez comment nous pouvons transformer votre présence numérique grâce à l'alignement astral de l'IA et de l'automatisation.
+                            Découvrez comment nous pouvons transformer votre présence numérique grâce à l&apos;alignement astral de l&apos;IA et de l&apos;automatisation.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -95,7 +95,7 @@ export default function ServicesPage() {
                                 <h2 className="text-3xl font-cinzel font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Branding Cosmique</h2>
 
                                 <p className="text-lg text-gray-light mb-6">
-                                    Notre approche de branding intègre l'intelligence artificielle pour créer des identités de marque uniques et mémorables qui résonnent avec l'énergie astrale de votre audience cible.
+                                    Notre approche de branding intègre l&apos;intelligence artificielle pour créer des identités de marque uniques et mémorables qui résonnent avec l&apos;énergie astrale de votre audience cible.
                                 </p>
 
                                 <ul className="space-y-4">
@@ -183,7 +183,7 @@ export default function ServicesPage() {
                                 <h2 className="text-3xl font-cinzel font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Sites Stellaires</h2>
 
                                 <p className="text-lg text-gray-light mb-6">
-                                    Nous concevons des sites web intelligents et optimisés pour la conversion, avec une attention particulière à l'expérience utilisateur cosmique et la performance stellaire.
+                                    Nous concevons des sites web intelligents et optimisés pour la conversion, avec une attention particulière à l&apos;expérience utilisateur cosmique et la performance stellaire.
                                 </p>
 
                                 <ul className="space-y-4">
@@ -209,7 +209,7 @@ export default function ServicesPage() {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
-                                        <span className="text-gray-light">Intégration d'outils d'IA et d'automatisation stellaire</span>
+                                        <span className="text-gray-light">Intégration d&apos;outils d&apos;IA et d&apos;automatisation stellaire</span>
                                     </li>
                                 </ul>
                             </motion.div>
@@ -280,7 +280,7 @@ export default function ServicesPage() {
                                 <h2 className="text-3xl font-cinzel font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Stratégie Astrale</h2>
 
                                 <p className="text-lg text-gray-light mb-6">
-                                    Nous développons des stratégies d'intelligence artificielle qui s'alignent sur les forces cosmiques de votre entreprise pour une communication plus intuitive et efficace.
+                                    Nous développons des stratégies d&apos;intelligence artificielle qui s&apos;alignent sur les forces cosmiques de votre entreprise pour une communication plus intuitive et efficace.
                                 </p>
 
                                 <ul className="space-y-4">
@@ -306,7 +306,7 @@ export default function ServicesPage() {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
-                                        <span className="text-gray-light">Personnalisation de contenu basée sur l'astrologie numérique</span>
+                                        <span className="text-gray-light">Personnalisation de contenu basée sur l&apos;astrologie numérique</span>
                                     </li>
                                 </ul>
                             </motion.div>
@@ -485,7 +485,7 @@ export default function ServicesPage() {
                             <h2 className="text-3xl font-cinzel font-semibold mb-4 text-foreground">Prêt à atteindre les étoiles ?</h2>
 
                             <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-light">
-                                Laissez-nous aligner votre communication avec les énergies cosmiques de l'innovation pour des résultats qui transcendent les attentes.
+                                Laissez-nous aligner votre communication avec les énergies cosmiques de l&apos;innovation pour des résultats qui transcendent les attentes.
                             </p>
 
                             <Link

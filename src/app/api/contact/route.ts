@@ -37,7 +37,7 @@ export async function POST(req: Request) {
         if (!n8nResponse.ok) {
             console.error('n8n webhook error:', await n8nResponse.text());
             return NextResponse.json(
-                { success: false, message: 'Erreur lors de l\'enregistrement des données' },
+                { success: false, message: 'Erreur lors de l&apos;enregistrement des données' },
                 { status: 500 }
             );
         }

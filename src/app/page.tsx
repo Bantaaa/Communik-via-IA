@@ -88,7 +88,7 @@ export default function Home() {
                       }
                     }}
                 >
-                  Transformez votre présence numérique grâce à l'intelligence artificielle et l'automatisation guidées par les constellations.
+                  Transformez votre pr&apos;esence num&apos;erique gr&apos;ace &agrave; l&apos;intelligence artificielle et l&apos;automatisation guid&apos;ees par les constellations.
                 </motion.p>
 
                 <motion.div
@@ -204,7 +204,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: 0.1 }}
               >
-                Découvrez comment nos services peuvent aligner vos projets avec les énergies cosmiques de l'innovation.
+                Découvrez comment nos services peuvent aligner vos projets avec les énergies cosmiques de l&apos;innovation.
               </motion.p>
             </div>
 
@@ -308,11 +308,10 @@ export default function Home() {
               <div className="mb-1">
                 <StarIcon className="w-8 h-8 mx-auto text-secondary mb-4 animate-pulse" />
               </div>
-
               <h2 className="text-3xl font-cinzel font-semibold mb-4 text-foreground">Prêt à transformer votre communication cosmique ?</h2>
 
               <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-light">
-                Contactez-nous dès aujourd'hui pour discuter de votre projet et découvrir comment l'IA peut révolutionner votre communication.
+                Contactez-nous dès aujourd&apos;hui pour discuter de votre projet et découvrir comment l&apos;IA peut révolutionner votre communication.
               </p>
 
               <Link
