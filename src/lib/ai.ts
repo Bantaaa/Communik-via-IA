@@ -11,28 +11,6 @@ export interface AIAnalysisResult {
 }
 
 /**
- * Generate a system prompt for the AI
- */
-function generateSystemPrompt(): string {
-    return `You are an assistant for a communication agency named 'Communik via IA' that specializes in branding, website creation, AI strategy, and automation. Your task is to analyze incoming contact form submissions and provide a summary, suggest an appropriate offer based on the message content, and categorize the need.`;
-}
-
-/**
- * Generate a user prompt based on the contact form data
- */
-function generateUserPrompt(data: ContactFormData): string {
-    return `Name: ${data.name}
-Company: ${data.company || 'Not specified'}
-Service Interest: ${data.serviceInterest}
-Message: ${data.message}
-
-Please provide:
-1. A summary of the request (3-4 sentences)
-2. A suggested offer based on the content (2-3 sentences)
-3. Category of need (one of: branding, website, ai-strategy, automation, or multiple)`;
-}
-
-/**
  * This function would analyze the contact form data using OpenAI API directly
  * In our implementation, n8n handles this logic
  */

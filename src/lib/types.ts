@@ -12,5 +12,5 @@ export interface ContactFormData {
 export interface ApiResponse {
     success: boolean;
     message: string;
-    data?: any;
+    data?: unknown;
 }
