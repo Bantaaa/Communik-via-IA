@@ -57,7 +57,8 @@ export default function ContactForm() {
                 setSubmitSuccess(false);
                 setSubmitMessage(result.message || 'Une erreur est survenue. Veuillez réessayer.');
             }
-        } catch (error) {
+        } catch {
+            // No need to declare the error variable if we're not using it
             setSubmitSuccess(false);
             setSubmitMessage('Une erreur est survenue. Veuillez réessayer.');
         } finally {
