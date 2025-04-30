@@ -53,6 +53,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+/* Fix pour les titres avec background-clip qui sont invisibles - couleur blanche */
+[class*="bg-clip-text"][class*="text-transparent"] {
+  color: white !important;
+  -webkit-background-clip: text;
+}
+
+/* Alternative plus spécifique pour les titres avec dégradé */
+.bg-gradient-to-r.text-transparent.bg-clip-text {
+  color: white !important;
+  -webkit-background-clip: text;
+}
+
 /* Star Animation */
 .stars {
   position: fixed;
